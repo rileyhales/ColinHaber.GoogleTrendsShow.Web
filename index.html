@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<title>Google Trends Show</title>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="/media/favicon.png" sizes="32x32" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" type="text/css" />
+		<link rel="stylesheet" href="/styles/game.css" type="text/css" />
+		<script type="application/javascript" src="https://ssl.gstatic.com/trends_nrtr/1294_RC01/embed_loader.js"></script>
+		<script type="application/javascript" src="/scripts/game.js"></script>
+		<script type="application/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-105305084-3" async></script>
+		<script type="application/javascript">
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "UA-105305084-3");
+		</script>
+		<template id="template-custom">
+			<aside class="custom">
+				<div class="custom-content">
+					<input type="text" class="custom-term" placeholder="Term 1" />
+					<input type="text" class="custom-term" placeholder="Term 2" />
+					<input type="text" class="custom-term" placeholder="Term 3" />
+					<input type="text" class="custom-term" placeholder="Term 4" />
+					<input type="text" class="custom-term" placeholder="Term 5" />
+					<div class="custom-tray tray">
+						<button class="_primary" data-action="submit" disabled>Submit</button>
+						<button data-action="cancel">Cancel</button>
+					</div>
+				</div>
+			</aside>
+		</template>
+	</head>
+	<body class="game">
+		<header class="game-header">
+			<hgroup>
+				<h1>Google Trends Show</h1>
+			</hgroup>
+		</header>
+		<main class="game-main">
+			<figure class="graph"></figure>
+			<section class="control">
+				<div class="teams">
+					<div class="team _blue">
+						<input type="text" class="team-name" placeholder="Team Blue" tabindex="1" />
+						<input type="text" class="team-score" placeholder="Score" inputmode="numeric" value="0" tabindex="3" />
+						<input type="text" class="team-answer" placeholder="Answer" tabindex="5" />
+					</div>
+					<div class="team _red">
+						<input type="text" class="team-name" placeholder="Team Red" tabindex="2" />
+						<input type="text" class="team-score" placeholder="Score" inputmode="numeric" value="0" tabindex="4" />
+						<input type="text" class="team-answer" placeholder="Answer" tabindex="6" />
+					</div>
+				</div>
+				<input type="text" class="control-keyword" placeholder="Keyword" tabindex="7" />
+				<div class="control-tray tray">
+					<button class="_primary" tabindex="8" data-action="submit" disabled>Submit</button>
+					<button tabindex="9" data-action="custom">Custom</button>
+					<button tabindex="10" data-action="clear" disabled>Clear</button>
+					<button tabindex="11" data-action="reset" disabled>Reset</button>
+				</div>
+			</section>
+		</main>
+		<footer class="game-footer">
+			<p>Made with &#x01F937; by <a href="http://colin.haber.sexy/" target="_blank">Colin Haber</a></p>
+			<a class="_github" href="https://github.com/colin-haber/ColinHaber.GoogleTrendsShow.Web" target="_blank"><img src="/media/octocat.svg" /></a>
+		</footer>
+	</body>
+</html>
