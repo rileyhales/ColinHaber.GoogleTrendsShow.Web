@@ -97,15 +97,15 @@ input {
 		font-size: 0.8em;
 		color: white;
 		background-color: $grey-primary;
+		._github {
+			display: block;
+			img {
+				display: block;
+				height: 1.4em;
+			}
+		}
 		:any-link {
 			font-weight: 500;
-			&._github {
-				display: block;
-				img {
-					display: block;
-					height: 1.4em;
-				}
-			}
 			&:focus,
 			&:hover {
 				text-decoration: underline;
