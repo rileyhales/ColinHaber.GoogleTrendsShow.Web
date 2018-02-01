@@ -18,22 +18,47 @@
 			gtag("js", new Date());
 			gtag("config", "UA-105305084-3");
 		</script>
+		<template id="template-help">
+			<div id="help" class="modal">
+				<div class="modal-content _help">
+					<aside class="help">
+						<h1>How to Play</h1>
+						<p>The <strong>Google Trends Show</strong> is a competition between two teams to see who can best predict the popularity of search terms on Google. The game was invented by noted strongman and avant&#x2010;garde Internet performance artist the <strong><span class="_trendmaster">Trendmaster</span></strong>, and popularized by his stage troupe <strong>Funhaus</strong>. <a href="http://funhaus.roosterteeth.com/episode/gameplay-2016-cum-vs-teen-google-trends-show" target="_blank">The debut can be viewed on their website.</a> Viewing is recommended to better understand the lore and nuances of the game world.</p>
+						<h2>Setup</h2>
+						<p>The game is played by two teams of any size, and coordinated by a neutral party, the <span class="_trendmaster">Trendmaster</span>. The <span class="_trendmaster">Trendmaster</span> will prepare the game by selecting 5&ndash;10 <dfn title="keyword">keywords</dfn> which teams will later use in their answers. Keywords are generally chosen to fit a theme related to current news and trends. For example, if the theme were the Olympics, example keywords might be <i>gold</i>, <i>silver</i>, <i>bronze</i>, and <i>doping</i>.</p>
+						<h2>Gameplay</h2>
+						<p>Once the terms have been prepared, the game can begin. Each round is played as follows:</p>
+						<ul>
+							<li>The <span class="_trendmaster">Trendmaster</span> enters a keyword</li>
+							<li>The teams then have 60 seconds to decide upon a word to pair with the keyword&mdash;the resulting phrase is their <dfn>answer</dfn></li>
+							<li>The teams enter their answers&mdash;the team with the fewest points answers first</li>
+							<li>The answers are submitted, and the resulting scores&mdash;either the average or the most recent data point&mdash;are added to each team&rsquo;s total</li>
+							<li>The losing team expresses regret, assigns blame, and thinks of answers that would have been a better choice, validating their insecurities with the <b>Custom</b> button</li>
+						</ul>
+						<p>Rounds continue until either the keyword list or the participants&rsquo; patience has been exhausted. The team with the most points at the end of the game wins.</p>
+						<div class="tray">
+							<button class="_primary" data-action="close">Close</button>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</template>
 		<template id="template-custom">
 			<div id="custom" class="modal">
 				<div class="modal-content">
-			<aside class="custom">
-					<input type="text" class="custom-term" placeholder="Term 1" />
-					<input type="text" class="custom-term" placeholder="Term 2" />
-					<input type="text" class="custom-term" placeholder="Term 3" />
-					<input type="text" class="custom-term" placeholder="Term 4" />
-					<input type="text" class="custom-term" placeholder="Term 5" />
-					<div class="custom-tray tray">
-						<button class="_primary" data-action="submit" disabled>Submit</button>
-						<button data-action="cancel">Cancel</button>
-					</div>
+					<aside class="custom">
+						<input type="text" class="custom-term" placeholder="Term 1" />
+						<input type="text" class="custom-term" placeholder="Term 2" />
+						<input type="text" class="custom-term" placeholder="Term 3" />
+						<input type="text" class="custom-term" placeholder="Term 4" />
+						<input type="text" class="custom-term" placeholder="Term 5" />
+						<div class="custom-tray tray">
+							<button class="_primary" data-action="submit" disabled>Submit</button>
+							<button data-action="cancel">Cancel</button>
+						</div>
 					</aside>
 				</div>
-				</div>
+			</div>
 		</template>
 	</head>
 	<body class="game">
@@ -41,6 +66,7 @@
 			<hgroup>
 				<h1>Google Trends Show</h1>
 			</hgroup>
+			<p><a class="_help"><img src="/media/help.svg" alt="Help" /></a></p>
 		</header>
 		<main class="game-main">
 			<figure class="graph"></figure>

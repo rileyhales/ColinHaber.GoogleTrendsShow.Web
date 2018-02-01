@@ -33,6 +33,15 @@ function closeCustomModal() {
 	document.body.classList.remove("_modal");
 }
 document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
+	document.querySelector(".game-header ._help").addEventListener("click", function (click) {
+		document.body.classList.add("_modal");
+		const help = document.importNode(document.querySelector("#template-help").content, true);
+		help.querySelector("[data-action=close]").addEventListener("click", function (click) {
+			document.getElementById("help").remove();
+			document.body.classList.remove("_modal");
+		});
+		document.body.appendChild(help);
+	});
 	document.querySelectorAll(".control input").forEach(element => element.addEventListener("input", updateActionState));
 	document.querySelector(".control [data-action=submit]").addEventListener("click", function (click) {
 		renderExploreWidgetTo(document.querySelector(".graph"), ...[...document.querySelectorAll(".team-answer")].map(element => element.value.toLowerCase()));

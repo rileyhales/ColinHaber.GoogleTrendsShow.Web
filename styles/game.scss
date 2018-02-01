@@ -11,7 +11,8 @@ $yellow-dark: #C49000;
 $yellow-light: #FFF263;
 $yellow-primary: #FBC02D;
 button,
-input {
+input,
+ul {
 	padding: unset;
 }
 button,
@@ -24,7 +25,9 @@ input {
 body,
 figure,
 h1,
-p {
+h2,
+p,
+ul {
 	margin: unset;
 }
 button,
@@ -33,6 +36,7 @@ input {
 }
 button,
 h1,
+h2,
 input {
 	font: unset;
 }
@@ -64,9 +68,18 @@ input {
 		overflow: hidden;
 	}
 	.game-header {
+		display: flex;
 		padding: 12px;
+		justify-content: space-between;
 		color: white;
 		background-color: $grey-primary;
+		._help {
+			display: block;
+			img {
+				display: block;
+				height: 1.4em;
+			}
+		}
 	}
 	.game-main {
 		display: flex;
@@ -280,6 +293,44 @@ input {
 		padding: 12px;
 	}
 }
+.help {
+	h1,
+	h2 {
+		font-weight: bold;
+	}
+	h1 {
+		font-size: 2em;
+	}
+	h2 {
+		font-size: 1.4em;
+	}
+	li {
+		margin-bottom: 0.5em;
+		&:last-child {
+			margin-bottom: unset;
+		}
+	}
+	p,
+	ul {
+		margin-bottom: 1em;
+		&:last-child {
+			margin-bottom: unset;
+		}
+	}
+	ul {
+		padding-left: 1em;
+	}
+	:any-link {
+		color: $blue-primary;
+		&:focus,
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	._trendmaster {
+		font-variant-caps: small-caps;
+	}
+}
 .modal {
 	display: flex;
 	padding: 12px;
@@ -296,9 +347,14 @@ input {
 		box-sizing: border-box;
 		width: 100%;
 		max-width: 288px + 24px;
+		max-height: 100%;
 		padding: 12px;
+		overflow: auto;
 		background-color: white;
 		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+		&._help {
+			max-width: 36em;
+		}
 	}
 }
 [id^=trends-widget] {
