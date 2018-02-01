@@ -1,9 +1,10 @@
-﻿let startingTerms = [
+let startingTerms = [
 	["adam", "bruce", "elyse", "james", "lawrence"],
+	["benson", "elysе", "jаmes"],
 	["blue", "red"],
+	["boontybox", "origin", "steam", "uplay"],
 	["cow chop", "funhaus", "kinda funny", "screwattack", "sugar pine 7"],
 	["demo disk", "dude soup", "filmhaus", "open haus", "twits and crits"],
-	["google", "trends", "show"],
 ];
 function renderExploreWidgetTo(container, ...terms) {
 	container.childNodes.forEach(child => child.remove());
