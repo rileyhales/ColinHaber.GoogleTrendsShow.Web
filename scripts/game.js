@@ -29,7 +29,7 @@ function updateActionState() {
 	actions.reset.disabled = !keyword && !answers.find(answer => answer) && !teamNames.find(name => name) && !scores.find(score => score != 0);
 }
 function closeCustomModal() {
-	document.querySelector(".custom").remove();
+	document.getElementById("custom").remove();
 	document.body.classList.remove("_modal");
 }
 document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
