@@ -56,6 +56,16 @@ function closeCustomModal() {
 	document.getElementById("custom").remove();
 	document.body.classList.remove("_modal");
 }
+function resetGameState() {
+	document.querySelector(".control-keyword").value = "";
+	document.querySelectorAll(".team-name").forEach(element => element.value = "");
+	document.querySelectorAll(".team-score").forEach(element => element.value = "0");
+	document.querySelectorAll(".team-answer").forEach(element => element.value = "");
+	updateActionState();
+	saveGameState();
+	[...document.querySelector(".graph").children].forEach(el => el.remove());
+	renderExploreWidgetTo(document.querySelector(".graph"), ...startingTerms[Math.floor(Math.random() * startingTerms.length)]);
+}
 document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
 	if (window.localStorage.getItem("keyword")) {
 		loadGameState();
@@ -102,14 +112,18 @@ document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
 		saveGameState();
 	});
 	document.querySelector(".control [data-action=reset]").addEventListener("click", function (click) {
-		document.querySelector(".control-keyword").value = "";
-		document.querySelectorAll(".team-name").forEach(element => element.value = "");
-		document.querySelectorAll(".team-score").forEach(element => element.value = "0");
-		document.querySelectorAll(".team-answer").forEach(element => element.value = "");
-		updateActionState();
-		saveGameState();
-		[...document.querySelector(".graph").children].forEach(el => el.remove());
-		renderExploreWidgetTo(document.querySelector(".graph"), ...startingTerms[Math.floor(Math.random() * startingTerms.length)]);
+		document.body.classList.add("_modal");
+		const reset = document.importNode(document.querySelector("#template-reset").content, true);
+		reset.querySelector(".reset [data-action=reset]").addEventListener("click", function (click) {
+			resetGameState();
+			document.querySelector("#reset").remove();
+			document.body.classList.remove("_modal");
+		});
+		reset.querySelector(".reset [data-action=cancel]").addEventListener("click", function (click) {
+			document.querySelector("#reset").remove();
+			document.body.classList.remove("_modal");
+		});
+		document.body.appendChild(reset);
 	});
 });
 window.addEventListener("load", function (load) {

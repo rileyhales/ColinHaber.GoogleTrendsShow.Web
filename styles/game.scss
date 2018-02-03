@@ -183,6 +183,20 @@ input {
 				box-shadow: none;
 			}
 		}
+		&._danger {
+			padding: 6px 12px;
+			color: white;
+			background-color: $red-primary;
+			&:disabled {
+				color: $red-dark;
+			}
+			&:not(:disabled):hover {
+				box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+			}
+			&:not(:disabled):active {
+				box-shadow: none;
+			}
+		}
 		&:last-child {
 			margin-left: unset;
 		}
@@ -322,44 +336,6 @@ input {
 		padding: 12px;
 	}
 }
-.help {
-	h1,
-	h2 {
-		font-weight: bold;
-	}
-	h1 {
-		font-size: 2em;
-	}
-	h2 {
-		font-size: 1.4em;
-	}
-	li {
-		margin-bottom: 0.5em;
-		&:last-child {
-			margin-bottom: unset;
-		}
-	}
-	p,
-	ul {
-		margin-bottom: 1em;
-		&:last-child {
-			margin-bottom: unset;
-		}
-	}
-	ul {
-		padding-left: 1em;
-	}
-	:any-link {
-		color: $blue-primary;
-		&:focus,
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-	._trendmaster {
-		font-variant-caps: small-caps;
-	}
-}
 .modal {
 	display: flex;
 	padding: 12px;
@@ -383,6 +359,42 @@ input {
 		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 		&._help {
 			max-width: 36em;
+			._trendmaster {
+				font-variant-caps: small-caps;
+			}
+		}
+		h1,
+		h2 {
+			font-weight: bold;
+		}
+		h1 {
+			font-size: 2em;
+		}
+		h2 {
+			font-size: 1.4em;
+		}
+		li {
+			margin-bottom: 0.5em;
+			&:last-child {
+				margin-bottom: unset;
+			}
+		}
+		p,
+		ul {
+			margin-bottom: 1em;
+			&:last-child {
+				margin-bottom: unset;
+			}
+		}
+		ul {
+			padding-left: 1em;
+		}
+		:any-link {
+			color: $blue-primary;
+			&:focus,
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 	}
 }
