@@ -70,6 +70,12 @@ document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
 		});
 		document.body.appendChild(help);
 	});
+	document.querySelector(".game-header ._fullscreen").addEventListener("click", function (click) {
+		if (document.body.requestFullscreen) document.body.requestFullscreen();
+		else if (document.body.mozRequestFullScreen) document.body.mozRequestFullScreen();
+		else if (document.body.msRequestFullscreen) document.body.msRequestFullscreen();
+		else if (document.body.webkitRequestFullscreen) document.body.webkitRequestFullscreen();
+	});
 	document.querySelectorAll(".control input").forEach(element => element.addEventListener("change", saveGameState));
 	document.querySelectorAll(".control input").forEach(element => element.addEventListener("input", updateActionState));
 	document.querySelector(".control [data-action=submit]").addEventListener("click", function (click) {

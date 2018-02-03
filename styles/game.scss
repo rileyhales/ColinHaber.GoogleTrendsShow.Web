@@ -57,6 +57,8 @@ input {
 }
 :root {
 	font: 1em/1.4 "Roboto", "Arial", sans-serif;
+	color: black;
+	background: white;
 }
 .game {
 	display: flex;
@@ -74,12 +76,20 @@ input {
 		justify-content: space-between;
 		color: white;
 		background-color: $grey-primary;
-		._help {
-			display: block;
-			cursor: pointer;
-			img {
+		._tray {
+			display: flex;
+			flex-direction: row-reverse;
+			> * {
 				display: block;
-				height: 1.4em;
+				cursor: pointer;
+				margin-left: 1em;
+				&:last-child {
+					margin-left: unset;
+				}
+				img {
+					display: block;
+					height: 1.4em;
+				}
 			}
 		}
 	}
