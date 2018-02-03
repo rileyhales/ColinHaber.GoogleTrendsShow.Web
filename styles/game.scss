@@ -60,8 +60,8 @@ input {
 }
 .game {
 	display: flex;
-	min-height: 100vh;
 	width: 100vw;
+	height: 100vh;
 	overflow-x: hidden;
 	flex-direction: column;
 	&._modal {
@@ -69,6 +69,7 @@ input {
 	}
 	.game-header {
 		display: flex;
+		flex: 0 0 auto;
 		padding: 12px;
 		justify-content: space-between;
 		color: white;
@@ -92,6 +93,7 @@ input {
 	}
 	.game-footer {
 		display: flex;
+		flex: 0 0 auto;
 		padding: 12px;
 		border-top: 1px solid #E0E0E0;
 		justify-content: space-between;
@@ -115,9 +117,24 @@ input {
 	}
 }
 .graph {
-	overflow: hidden;
+	display: flex;
+	flex-direction: column-reverse;
+	overflow: auto;
 	iframe {
 		display: block;
+		flex: 0 0 auto;
+		border-bottom: 1px solid #E0E0E0;
+		margin-bottom: auto;
+		opacity: 0.4;
+		transition-property: opacity;
+		transition-duration: 0.2s;
+		&:hover,
+		&:last-child {
+			opacity: 1;
+		}
+	}
+	&::-webkit-scrollbar {
+		display: none;
 	}
 	@media (orientation: landscape) {
 		flex: 2 2 66.66%;
@@ -173,7 +190,7 @@ input {
 }
 .control {
 	display: flex;
-	flex-grow: 1;
+	flex: 1 0 auto;
 	flex-direction: column;
 	@media (orientation: portrait) {
 		justify-content: flex-end;

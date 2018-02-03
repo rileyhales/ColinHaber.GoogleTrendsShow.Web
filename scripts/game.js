@@ -7,7 +7,6 @@ let startingTerms = [
 	["demo disk", "dude soup", "filmhaus", "open haus", "twits and crits"],
 ];
 function renderExploreWidgetTo(container, ...terms) {
-	container.childNodes.forEach(child => child.remove());
 	const config = {
 		comparisonItem: []
 	};
@@ -18,6 +17,13 @@ function renderExploreWidgetTo(container, ...terms) {
 		});
 	});
 	trends.embed.renderExploreWidgetTo(container, "TIMESERIES", config);
+	container.lastElementChild.addEventListener("load", function (load) {
+		window.setTimeout(function () {
+			container.lastElementChild.scrollIntoView({
+				behavior: "smooth"
+			});
+		}, 1000);
+	});
 }
 function updateActionState() {
 	const keyword = document.querySelector(".control-keyword").value;
@@ -27,7 +33,6 @@ function updateActionState() {
 	const actions = [...document.querySelectorAll(".control [data-action]")].reduce((map, element) => (map[element.dataset.action] = element, map), {});
 	actions.submit.disabled = !keyword || !answers.every(answer => answer && answer.toLowerCase().includes(keyword.toLowerCase()));
 	actions.clear.disabled = !keyword && !answers.find(answer => answer);
-	actions.reset.disabled = !keyword && !answers.find(answer => answer) && !teamNames.find(name => name) && !scores.find(score => score != 0);
 }
 function saveGameState() {
 	window.localStorage.setItem("blue.name", document.querySelector(".team._blue .team-name").value);
@@ -97,6 +102,8 @@ document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
 		document.querySelectorAll(".team-answer").forEach(element => element.value = "");
 		updateActionState();
 		saveGameState();
+		[...document.querySelector(".graph").children].forEach(el => el.remove());
+		renderExploreWidgetTo(document.querySelector(".graph"), ...startingTerms[Math.floor(Math.random() * startingTerms.length)]);
 	});
 });
 window.addEventListener("load", function (load) {
