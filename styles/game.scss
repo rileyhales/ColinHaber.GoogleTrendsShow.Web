@@ -97,6 +97,7 @@ input {
 		display: flex;
 		flex-grow: 1;
 		flex-direction: column;
+		background-color: white;
 		@media (orientation: landscape) {
 			flex-direction: row;
 		}
