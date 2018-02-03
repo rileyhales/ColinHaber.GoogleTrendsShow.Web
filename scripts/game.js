@@ -29,11 +29,33 @@ function updateActionState() {
 	actions.clear.disabled = !keyword && !answers.find(answer => answer);
 	actions.reset.disabled = !keyword && !answers.find(answer => answer) && !teamNames.find(name => name) && !scores.find(score => score != 0);
 }
+function saveGameState() {
+	window.localStorage.setItem("blue.name", document.querySelector(".team._blue .team-name").value);
+	window.localStorage.setItem("blue.score", document.querySelector(".team._blue .team-score").value);
+	window.localStorage.setItem("blue.answer", document.querySelector(".team._blue .team-answer").value);
+	window.localStorage.setItem("red.name", document.querySelector(".team._red .team-name").value);
+	window.localStorage.setItem("red.score", document.querySelector(".team._red .team-score").value);
+	window.localStorage.setItem("red.answer", document.querySelector(".team._red .team-answer").value);
+	window.localStorage.setItem("keyword", document.querySelector(".control-keyword").value);
+}
+function loadGameState() {
+	document.querySelector(".team._blue .team-name").value = window.localStorage.getItem("blue.name");
+	document.querySelector(".team._blue .team-score").value = window.localStorage.getItem("blue.score");
+	document.querySelector(".team._blue .team-answer").value = window.localStorage.getItem("blue.answer");
+	document.querySelector(".team._red .team-name").value = window.localStorage.getItem("red.name");
+	document.querySelector(".team._red .team-score").value = window.localStorage.getItem("red.score");
+	document.querySelector(".team._red .team-answer").value = window.localStorage.getItem("red.answer");
+	document.querySelector(".control-keyword").value = window.localStorage.getItem("keyword");
+}
 function closeCustomModal() {
 	document.getElementById("custom").remove();
 	document.body.classList.remove("_modal");
 }
 document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
+	if (window.localStorage.getItem("keyword")) {
+		loadGameState();
+		updateActionState();
+	}
 	document.querySelector(".game-header ._help").addEventListener("click", function (click) {
 		document.body.classList.add("_modal");
 		const help = document.importNode(document.querySelector("#template-help").content, true);
@@ -43,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
 		});
 		document.body.appendChild(help);
 	});
+	document.querySelectorAll(".control input").forEach(element => element.addEventListener("change", saveGameState));
 	document.querySelectorAll(".control input").forEach(element => element.addEventListener("input", updateActionState));
 	document.querySelector(".control [data-action=submit]").addEventListener("click", function (click) {
 		renderExploreWidgetTo(document.querySelector(".graph"), ...[...document.querySelectorAll(".team-answer")].map(element => element.value.toLowerCase()));
@@ -65,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
 		document.querySelector(".control-keyword").value = "";
 		document.querySelectorAll(".team-answer").forEach(element => element.value = "");
 		updateActionState();
+		saveGameState();
 	});
 	document.querySelector(".control [data-action=reset]").addEventListener("click", function (click) {
 		document.querySelector(".control-keyword").value = "";
@@ -72,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function (DOMContentLoaded) {
 		document.querySelectorAll(".team-score").forEach(element => element.value = "0");
 		document.querySelectorAll(".team-answer").forEach(element => element.value = "");
 		updateActionState();
+		saveGameState();
 	});
 });
 window.addEventListener("load", function (load) {
